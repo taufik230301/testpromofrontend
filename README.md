@@ -7,25 +7,25 @@ npm install
 
 Pilihan menjalankan app:
 
-* Jalankan di emulator Android:
+- Jalankan di emulator Android:
 
 ```bash
 npm run android
 ```
 
-* Jalankan di simulator iOS:
+- Jalankan di simulator iOS:
 
 ```bash
 npm run ios
 ```
 
-* Jalankan di web browser:
+- Jalankan di web browser:
 
 ```bash
 npm run web
 ```
 
-* Jalankan langsung ke device Android:
+- Jalankan langsung ke device Android:
 
 ```bash
 npx expo run:android
@@ -35,15 +35,15 @@ npx expo run:android
 
 ## ⚡ Catatan
 
-ganti baseurl dengip local komputer
+ganti baseurl dengan ip local komputer
 
-jalan kan comand untuk mendapatkan ip komputer : 
-ipconfig getifaddr en0
+jalan kan comand untuk mendapatkan ip komputer :
 
+- ipconfig getifaddr en0
 
-* Pastikan **DB container** sudah jalan sebelum backend dijalankan.
-* Table `promos` menggunakan `JSONB` untuk menyimpan `terms`, fleksibel untuk aturan promo.
-* Untuk optimasi performa di frontend, bisa gunakan `React.memo` dan `useCallback` jika perlu.
+- Pastikan **DB container** sudah jalan sebelum backend dijalankan.
+- Table `promos` menggunakan `JSONB` untuk menyimpan `terms`, fleksibel untuk aturan promo.
+- Untuk optimasi performa di frontend, bisa gunakan `React.memo` dan `useCallback` jika perlu.
 
 Kalau error masih soal Gradle / variant / dependency
 
@@ -60,4 +60,5 @@ cd android
 ./gradlew clean --refresh-dependencies
 cd ..
 npx expo run:android
+
 ---
