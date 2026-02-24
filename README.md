@@ -35,12 +35,13 @@ npx expo run:android
 
 ## ⚡ Catatan
 
-ganti baseurl dengan ip local komputer
+ganti EXPO_PUBLIC_BASE_URL pada .env dengan ip local komputer
 
 jalan kan comand untuk mendapatkan ip komputer :
 
 - ipconfig getifaddr en0
 - akan dapat ip local komputer contoh 198.xx.xx.xx
+- khusus npm run web gunakan localhost
 
 - Pastikan **DB container** sudah jalan sebelum backend dijalankan.
 - Table `promos` menggunakan `JSONB` untuk menyimpan `terms`, fleksibel untuk aturan promo.
