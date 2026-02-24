@@ -16,6 +16,8 @@ const CARD_WIDTH = width * 0.8;
 const SPACING = 0.1;
 
 export default function SpecialPromoCarousel() {
+  const baseUrl = process.env.EXPO_PUBLIC_BASE_URL;
+  console.log("Base URL ->:", baseUrl);
   const flatListRef = useRef<FlatList>(null);
   const [selectedPromo, setSelectedPromo] = useState<any>(null);
   const [promos, setPromos] = useState<any[]>([]);
@@ -24,7 +26,7 @@ export default function SpecialPromoCarousel() {
   useEffect(() => {
     const fetchPromos = async () => {
       try {
-        const response = await fetch("http://10.187.87.76:5129/api/promos"); // replace dengan local ip komputer
+        const response = await fetch(`${baseUrl}/api/promos`); // replace dengan local ip komputer
         if (!response.ok) throw new Error("Failed to fetch promos");
         const data = await response.json();
         setPromos(data); // pastikan API return array

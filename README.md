@@ -40,7 +40,7 @@ ganti baseurl dengan ip local komputer
 jalan kan comand untuk mendapatkan ip komputer :
 
 - ipconfig getifaddr en0
-
+- akan dapat ip local komputer contoh 198.xx.xx.xx
 - Pastikan **DB container** sudah jalan sebelum backend dijalankan.
 - Table `promos` menggunakan `JSONB` untuk menyimpan `terms`, fleksibel untuk aturan promo.
 - Untuk optimasi performa di frontend, bisa gunakan `React.memo` dan `useCallback` jika perlu.
