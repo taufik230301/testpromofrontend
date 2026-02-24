@@ -31,7 +31,6 @@ const handleCopy = async (code: string) => {
 };
 
 export default function PromoDetailModal({ visible, promo, onClose }: Props) {
-  console.log("PromoDetailModal rendered with promo:", promo);
   return (
     <Modal
       visible={visible}
@@ -170,7 +169,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#9B6BCB",
     paddingHorizontal: 20,
     paddingVertical: 12,
-    borderRadius: 999
+    borderRadius: 999,
   },
 
   copyText: {

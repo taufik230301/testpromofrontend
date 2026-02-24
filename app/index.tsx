@@ -1,5 +1,6 @@
 import PromoCard from "@/components/card/PromoCard";
 import PromoDetailModal from "@/components/modal/PromoDetailModal";
+import { getPromos } from "@/services/promo.service";
 import React, { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -16,20 +17,27 @@ const CARD_WIDTH = width * 0.8;
 const SPACING = 0.1;
 
 export default function SpecialPromoCarousel() {
-  const baseUrl = process.env.EXPO_PUBLIC_BASE_URL;
-  console.log("Base URL ->:", baseUrl);
   const flatListRef = useRef<FlatList>(null);
   const [selectedPromo, setSelectedPromo] = useState<any>(null);
   const [promos, setPromos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    try {
+      const data = await getPromos();
+      setPromos(data);
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   useEffect(() => {
     const fetchPromos = async () => {
       try {
-        const response = await fetch(`${baseUrl}/api/promos`); // replace dengan local ip komputer
-        if (!response.ok) throw new Error("Failed to fetch promos");
-        const data = await response.json();
-        setPromos(data); // pastikan API return array
+        const dataPromo = await getPromos();
+        setPromos(dataPromo);
       } catch (error: any) {
         console.error(error);
         Alert.alert("Error", error.message || "Gagal mengambil promo");
@@ -69,6 +77,8 @@ export default function SpecialPromoCarousel() {
         decelerationRate="fast"
         contentContainerStyle={{ paddingHorizontal: SPACING }}
         keyExtractor={(item) => item.id}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
         renderItem={({ item }) => (
           <View style={{ width: CARD_WIDTH, marginRight: SPACING }}>
             <PromoCard {...item} onPress={() => setSelectedPromo(item)} />
